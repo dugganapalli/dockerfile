@@ -42,3 +42,13 @@ EXPOSE 8080
 
 #tomcat start
 CMD ["./opt/tomcat/apache-tomcat-8.5.8/bin/catalina.sh","run"] && tail -f /opt/tomcat/apache-tomcat-8.5.8/logs/catalina.out 
+
+
+httpd
+========
+
+FROM centos:latest
+RUN yum -y install httpd
+COPY index.html /var/www/html/
+CMD [/usr/sbin/httpd, -D, FOREGROUND]
+EXPOSE 80
